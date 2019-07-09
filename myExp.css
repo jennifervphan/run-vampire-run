@@ -1,10 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Voltaire');
 body {
     margin: 0;
     height: 100vh;
-}
-
-canvas {
-    display: block;
 }
 
 #world {
@@ -15,7 +12,6 @@ canvas {
     background: linear-gradient(#1e2022, #52616b);
 }
 
-@import url('https://fonts.googleapis.com/css?family=Voltaire');
 #gameoverInstructions {
     position: absolute;
     font-family: 'Voltaire', sans-serif;
@@ -31,12 +27,12 @@ canvas {
     transform: translate(-50%, -100%);
     user-select: none;
     transition: all 500ms ease-in-out;
-    &.show {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-        transition: all 500ms ease-in-out;
-    }
-    ;
+}
+
+#gameoverInstructions.show {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    transition: all 500ms ease-in-out;
 }
 
 #dist {
@@ -51,7 +47,7 @@ canvas {
     position: relative;
     font-family: 'Voltaire', sans-serif;
     text-transform: uppercase;
-    color: #ffa873; //100707;
+    color: #ffa873;
     font-size: 12px;
     letter-spacing: 2px;
     text-align: center;
@@ -61,7 +57,7 @@ canvas {
 #distValue {
     position: relative;
     text-transform: uppercase;
-    color: #dc5f45; //dc5f45;
+    color: #dc5f45;
     font-size: 40px;
     font-family: 'Voltaire';
     text-align: center;
@@ -106,5 +102,5 @@ canvas {
 }
 
 .lightInstructions {
-    color: white;
+    color: #5f9042;
 }

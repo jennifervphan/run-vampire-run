@@ -1,13 +1,3 @@
-var Colors = {
-    darkblack: 0x000000,
-    black: 0x1e2022,
-    grey: 0x52616b,
-    darkGrey: 0x303841,
-    lightGrey: 0xc9d6df,
-    lighterGrey: 0xf0f5f9,
-    superLight: 0xeeeeee,
-    red: 0xd72323
-}
 var scene;
 var camera;
 var fieldOfView;
@@ -22,6 +12,12 @@ var hemisphereLight;
 var shadowLight;
 var world;
 var worldRadius = 200;
+var worldRotation = 0;
+var speed = 5;
+var delta = 0;
+var vamp;
+var cameraPosGame = 160;
+var cameraPosGameOver = 260;
 
 
 window.addEventListener('load', init, false);
@@ -35,12 +31,13 @@ function init() {
 
     // add the objects
     createWorld();
-    // createVamp();
-    // createBlood();
+    // createTrees();
+    createVamp();
+    createBlood();
     // createGarlic();
 
-
+    // resetGame();
     // start a loop that will update the objects' positions 
     // and render the scene on each frame
-    // loop();
+    loop();
 }
