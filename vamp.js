@@ -1,6 +1,6 @@
 Vampire = function() {
-    // this.status = "running";
-    // this.runningCycle = 0;
+    this.status = "running";
+    this.runningCycle = 0;
 
     this.mesh = new THREE.Group();
     this.body = new THREE.Group();
@@ -10,19 +10,18 @@ Vampire = function() {
 
     this.torso = new THREE.Mesh(torsoGeom, whiteMat);
     this.torso.position.z = 4;
-    // this.torso.position.x = 4;
     this.torso.position.y = 12;
     this.torso.castShadow = true;
     this.body.add(this.torso);
 
-    var pantsGeom = new THREE.CubeGeometry(9, 8, 8, 1);
+    var pantsGeom = new THREE.CubeGeometry(9, 8, 9, 1);
     this.pants = new THREE.Mesh(pantsGeom, darkBlackMat);
     this.pants.position.z = -3;
     this.pants.position.y = 0;
     this.pants.castShadow = true;
     this.torso.add(this.pants);
 
-    var shirtGeom = new THREE.CubeGeometry(3, 3, 7, 1);
+    var shirtGeom = new THREE.CubeGeometry(3, 4, 7, 1);
     this.shirtR = new THREE.Mesh(shirtGeom, darkBlackMat);
     this.shirtR.position.x = 4;
     this.shirtR.position.y = 2;
@@ -34,30 +33,30 @@ Vampire = function() {
     this.torso.add(this.shirtL);
 
     var capeGeom = new THREE.CubeGeometry(20, 1, 20, 1);
-    capeGeom.vertices[5].x += 2;
+    capeGeom.vertices[5].x += 9;
     capeGeom.vertices[5].z += .5;
 
-    capeGeom.vertices[7].x += 2;
+    capeGeom.vertices[7].x += 9;
     capeGeom.vertices[7].z -= .5;
 
-    capeGeom.vertices[2].x -= 2;
+    capeGeom.vertices[2].x -= 9;
     capeGeom.vertices[2].z -= .5;
 
-    capeGeom.vertices[0].x -= 2;
+    capeGeom.vertices[0].x -= 9;
     capeGeom.vertices[0].z += .5;
     capeGeom.applyMatrix(new THREE.Matrix4().makeTranslation(0, 9, 0));
     this.cape = new THREE.Mesh(capeGeom, darkBlackMat);
     this.cape.position.x = 0;
-    this.cape.position.z = -5;
-    this.cape.position.y = 0;
+    this.cape.position.z = -6;
+    this.cape.position.y = 2.5;
     this.torso.add(this.cape);
 
     var headGeom = new THREE.CubeGeometry(10, 10, 13, 1);
 
     headGeom.applyMatrix(new THREE.Matrix4().makeTranslation(0, 0, 7.5));
     this.head = new THREE.Mesh(headGeom, whiteMat);
-    this.head.position.z = 2;
-    this.head.position.y = 25;
+    this.head.position.z = 4;
+    this.head.position.y = 26;
     this.head.castShadow = true;
     this.body.add(this.head);
 
@@ -82,71 +81,71 @@ Vampire = function() {
     this.nose.castShadow = true;
     this.head.add(this.nose);
 
-    var mouthGeom = new THREE.CubeGeometry(4, 2, 4, 1);
-    mouthGeom.applyMatrix(new THREE.Matrix4().makeTranslation(0, 0, 3));
-    mouthGeom.applyMatrix(new THREE.Matrix4().makeRotationX(Math.PI / 12));
-    this.mouth = new THREE.Mesh(mouthGeom, redMat);
-    this.mouth.position.z = 8;
-    this.mouth.position.y = -4;
-    this.mouth.castShadow = true;
-    this.head.add(this.mouth);
+    // var mouthGeom = new THREE.CubeGeometry(4, 2, 4, 1);
+    // mouthGeom.applyMatrix(new THREE.Matrix4().makeTranslation(0, 0, 3));
+    // mouthGeom.applyMatrix(new THREE.Matrix4().makeRotationX(Math.PI / 12));
+    // this.mouth = new THREE.Mesh(mouthGeom, redMat);
+    // this.mouth.position.z = 8;
+    // this.mouth.position.y = -4;
+    // this.mouth.castShadow = true;
+    // this.head.add(this.mouth);
 
 
-    var pawFGeom = new THREE.CubeGeometry(4, 4, 4, 1);
-    this.pawFR = new THREE.Mesh(pawFGeom, darkBlackMat);
-    this.pawFR.position.x = -2;
-    this.pawFR.position.z = 0;
-    this.pawFR.position.y = 1.5;
-    this.pawFR.castShadow = true;
-    this.body.add(this.pawFR);
+    var legGeom = new THREE.CubeGeometry(4, 4, 4, 1);
+    this.legR = new THREE.Mesh(legGeom, darkBlackMat);
+    this.legR.position.x = -2;
+    this.legR.position.z = 0;
+    this.legR.position.y = 1.5;
+    this.legR.castShadow = true;
+    this.body.add(this.legR);
 
-    this.pawFL = this.pawFR.clone();
-    this.pawFL.position.x = -this.pawFR.position.x;
-    this.pawFL.castShadow = true;
-    this.body.add(this.pawFL);
+    this.legL = this.legR.clone();
+    this.legL.position.x = -this.legR.position.x;
+    this.legL.castShadow = true;
+    this.body.add(this.legL);
 
-    var earGeom = new THREE.CubeGeometry(2, 3, 2, 1);
-    earGeom.vertices[6].x += 1;
-    earGeom.vertices[6].z += .5;
+    var toothGeom = new THREE.CubeGeometry(2, 3, 1, 1);
+    toothGeom.vertices[6].x += 1;
+    toothGeom.vertices[6].z += .5;
 
-    earGeom.vertices[7].x += 1;
-    earGeom.vertices[7].z -= .5;
+    toothGeom.vertices[7].x += 1;
+    toothGeom.vertices[7].z -= .5;
 
-    earGeom.vertices[2].x -= 1;
-    earGeom.vertices[2].z -= .5;
+    toothGeom.vertices[2].x -= 1;
+    toothGeom.vertices[2].z -= .5;
 
-    earGeom.vertices[3].x -= 1;
-    earGeom.vertices[3].z += .5;
-    earGeom.applyMatrix(new THREE.Matrix4().makeTranslation(0, 9, 0));
+    toothGeom.vertices[3].x -= 1;
+    toothGeom.vertices[3].z += .5;
+    toothGeom.applyMatrix(new THREE.Matrix4().makeTranslation(0, 9, 0));
 
-    this.earL = new THREE.Mesh(earGeom, redMat);
-    this.earL.position.x = 1;
-    this.earL.position.z = 13;
-    this.earL.position.y = -15;
-    this.earL.rotation.z = -Math.PI / 12;
-    this.earL.castShadow = true;
-    this.head.add(this.earL);
+    this.toothL = new THREE.Mesh(toothGeom, whiteMat);
+    this.toothL.position.x = 1;
+    this.toothL.position.z = 13;
+    this.toothL.position.y = -15;
+    this.toothL.rotation.z = -Math.PI / 12;
+    this.toothL.castShadow = true;
+    this.head.add(this.toothL);
 
-    this.earR = this.earL.clone();
-    this.earR.position.x = -this.earL.position.x;
-    this.earR.rotation.z = -this.earL.rotation.z;
-    this.earR.castShadow = true;
-    this.head.add(this.earR);
+    this.toothR = this.toothL.clone();
+    this.toothR.position.x = -this.toothL.position.x;
+    this.toothR.rotation.z = -this.toothL.rotation.z;
+    this.toothR.castShadow = true;
+    this.head.add(this.toothR);
 
     var eyeGeom = new THREE.CubeGeometry(2, 2, 3);
 
     this.eyeL = new THREE.Mesh(eyeGeom, whiteMat);
     this.eyeL.position.x = 5;
     this.eyeL.position.z = 7;
-    this.eyeL.position.y = 2.5;
+    this.eyeL.position.y = 3;
     this.eyeL.castShadow = true;
     this.head.add(this.eyeL);
 
-    var irisGeom = new THREE.CubeGeometry(.6, 2, 2);
+    var irisGeom = new THREE.CubeGeometry(.5, 1.5, 1.5);
 
-    this.iris = new THREE.Mesh(irisGeom, blackMat);
+    this.iris = new THREE.Mesh(irisGeom, darkBlackMat);
     this.iris.position.x = 1.2;
-    this.iris.position.y = 1;
+    this.iris.position.y = 0;
     this.iris.position.z = 1;
     this.eyeL.add(this.iris);
 
@@ -158,25 +157,25 @@ Vampire = function() {
     var armGeom = new THREE.CubeGeometry(2, 7, 3, 1);
     this.armR = new THREE.Mesh(armGeom, darkBlackMat);
     this.armR.position.x = 6;
-    this.armR.position.y = 14;
-    this.armR.position.z = 9;
+    this.armR.position.y = -5;
+    this.armR.position.z = 4;
     this.armR.castShadow = true;
-    this.body.add(this.armR);
+    this.torso.add(this.armR);
 
     this.armL = this.armR.clone();
     this.armL.position.x = -this.armR.position.x;
     this.armL.castShadow = true;
-    this.body.add(this.armL);
+    this.torso.add(this.armL);
 
     var hairGeom = new THREE.BoxGeometry(11, 7, 5);
-    this.hair = new THREE.Mesh(hairGeom, blackMat);
+    this.hair = new THREE.Mesh(hairGeom, darkBlackMat);
     this.hair.position.y = 3;
     this.hair.position.z = 1;
     this.head.add(this.hair);
 
 
-    this.armR.rotation.x = -Math.PI / 4;
-    this.armL.rotation.x = -Math.PI / 4;
+    this.armR.rotation.x = Math.PI / 4;
+    this.armL.rotation.x = Math.PI / 4;
     this.cape.rotation.x = Math.PI / 4;
     this.torso.rotation.x = -Math.PI / 3;
 

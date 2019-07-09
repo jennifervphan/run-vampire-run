@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Voltaire');
+@import url('https://fonts.googleapis.com/css?family=Barriecito&display=swap');
 body {
     margin: 0;
     height: 100vh;
@@ -14,7 +14,7 @@ body {
 
 #gameoverInstructions {
     position: absolute;
-    font-family: 'Voltaire', sans-serif;
+    font-family: 'Barriecito', cursive;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 120px;
@@ -22,7 +22,7 @@ body {
     color: #ffc5a2;
     opacity: 0;
     left: 50%;
-    top: 50%;
+    top: 30%;
     width: 100%;
     transform: translate(-50%, -100%);
     user-select: none;
@@ -36,19 +36,24 @@ body {
 }
 
 #dist {
-    position: absolute;
+    /* position: absolute; */
+    /* flex-direction: row;
+    align-items: center;
+    justify-content: center; */
     left: 50%;
     top: 50px;
     transform: translate(-50%, 0%);
     user-select: none;
+    padding-right: 50px;
+    border-right: solid 1px black;
 }
 
 .label {
     position: relative;
-    font-family: 'Voltaire', sans-serif;
-    text-transform: uppercase;
-    color: #ffa873;
-    font-size: 12px;
+    font-family: 'Barriecito', cursive;
+    /* text-transform: uppercase; */
+    color: white;
+    font-size: 20px;
     letter-spacing: 2px;
     text-align: center;
     margin-bottom: 5px;
@@ -57,9 +62,17 @@ body {
 #distValue {
     position: relative;
     text-transform: uppercase;
-    color: #dc5f45;
-    font-size: 40px;
-    font-family: 'Voltaire';
+    color: red;
+    font-size: 20px;
+    font-family: 'Barriecito';
+    text-align: center;
+}
+
+.distVal {
+    text-transform: uppercase;
+    color: white;
+    font-size: 10px;
+    font-family: 'Barriecito';
     text-align: center;
 }
 
@@ -69,11 +82,11 @@ body {
     margin: auto;
     bottom: 0;
     margin-bottom: 20px;
-    font-family: 'Voltaire', sans-serif;
+    font-family: 'Barriecito', cursive;
     color: #544027;
     font-size: 12px;
     letter-spacing: 0.5px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     text-align: center;
     user-select: none;
 }
@@ -92,15 +105,50 @@ body {
     bottom: 0;
     margin: auto;
     margin-bottom: 50px;
-    font-family: 'Voltaire', sans-serif;
-    color: #dc5f45;
-    font-size: 16px;
+    font-family: 'Barriecito', cursive;
+    color: white;
+    font-size: 18px;
     letter-spacing: 1px;
-    text-transform: uppercase;
     text-align: center;
     user-select: none;
 }
 
 .lightInstructions {
-    color: #5f9042;
+    color: red;
+}
+
+.garlic {
+    color: #f2e9d2;
+}
+
+#Progress_Status {
+    width: 100%;
+    background-color: none;
+    border-radius: 20px;
+    border: solid 1px black;
+}
+
+#myprogressBar {
+    width: 25%;
+    height: 20px;
+    border-radius: 20px;
+    background-color: red;
+    text-align: center;
+    line-height: 32px;
+    /* color: black; */
+}
+
+#levels {
+    background: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.blood {
+    left: 50%;
+    top: 50px;
+    transform: translate(-50%, 0%);
+    user-select: none;
 }
