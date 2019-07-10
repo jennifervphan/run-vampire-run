@@ -1,62 +1,58 @@
 Vampire.prototype.run = function() {
     this.status = "running";
-    audioBackground.play();
-    var s = Math.min(speed, maxSpeed);
-
+    var s = Math.min(speed, 50);
     this.runningCycle += delta * s * .7;
-    this.runningCycle = this.runningCycle % (Math.PI * 2);
+    this.runningCycle = this.runningCycle % (pi * 2);
     var t = this.runningCycle;
 
-    this.body.position.y = 2 + Math.sin(t - Math.PI / 2) * amp;
+    this.body.position.y = 2 + Math.sin(t - pi / 2) * amp;
 
-    this.torso.position.y = 15 + Math.sin(t - Math.PI / 2) * amp * 0.5;
+    this.torso.position.y = 15 + Math.sin(t - pi / 2) * amp * 0.5;
 
-    this.head.position.y = 30 + Math.cos(t - Math.PI / 2) * amp * .5;
+    this.head.position.y = 30 + Math.cos(t - pi / 2) * amp * .5;
 
-    this.cape.rotation.z = Math.cos(t) * Math.PI / 8;
+    this.cape.rotation.z = Math.cos(t) * pi / 8;
 
-    this.armL.rotation.x = Math.cos(t) * Math.PI / 16;
+    this.armL.rotation.x = Math.cos(t) * pi / 16;
 
-    this.armL.rotation.y = Math.cos(t) * Math.PI / 8;
+    this.armL.rotation.y = Math.cos(t) * pi / 8;
 
-    this.legR.position.z = (5 + Math.cos(t - Math.PI / 2) * amp * .8);
-    this.legR.position.y = 1;
+    this.legR.position.z = (5 + Math.cos(t - pi / 2) * amp * .8);
+    this.legR.position.y = 3;
 
-    this.legL.position.z = (5 + Math.cos(t - Math.PI / 2) * (-amp * .8));
-    this.legL.position.y = 1;
+    this.legL.position.z = (5 + Math.cos(t - pi / 2) * (-amp * .8));
+    this.legL.position.y = 3;
 }
 
 Vampire.prototype.jump = function() {
     if (this.status == "jumping") return;
     this.status = "jumping";
     audioJump.play();
-    var _this = this;
-    TweenMax.to(this.mesh.position, 0.8, { y: 40, ease: Power2.easeOut });
+    var fixedThis = this;
+    TweenMax.to(this.mesh.position, 0.8, { y: 50, ease: Power2.easeOut });
     TweenMax.to(this.legR.position, 0.8, { y: 5, ease: Power2.easeOut });
     TweenMax.to(this.legL.position, 0.8, { y: 5, ease: Power2.easeOut });
     TweenMax.to(this.mesh.position, 0.8, {
         y: 0,
         ease: Power4.easeIn,
-        delay: 0.8,
+        delay: 0.5,
         onComplete: function() {
-            _this.status = "running";
+            fixedThis.status = "running";
         }
     });
 }
 
 Vampire.prototype.caught = function() {
-    this.mesh.rotation.y = -pi / 2
-        // this.torso.mesh.visible = false;
+    this.mesh.rotation.y = -pi / 2;
     this.head.rotation.y = pi / 2;
-
-    this.head.position.y = 0;
+    this.head.position.x = 0;
     this.torso.position.y = 0;
-    this.head.position.y = 5;
+    this.head.position.y = 7.5;
 
 }
 
 Cross.prototype.run = function() {
-    var s = Math.min(speed, maxSpeed);
+    var s = Math.min(speed, 50);
     this.runningCycle += delta * s * .7;
     this.runningCycle = this.runningCycle % (pi * 2);
     var t = this.runningCycle;
@@ -72,62 +68,67 @@ Cross.prototype.run = function() {
 }
 
 Cross.prototype.win = function() {
-    cross.body.rotation.y = 0;
     cross.body.rotation.x = 0;
-    cross.body.position.y = 30;
-    cross.body.position.x = 8;
+    cross.body.rotation.z = pi / 8;
+    cross.body.position.y = 20;
+    cross.body.position.x = vamp.mesh.position.x;
+    // cross.body.position.x = 0;
+
+    cross.mesh.scale.set(2.5, 2.5, 2)
     gameStatus = "readyToReplay";
 }
 
 Garlic.prototype.hit = function() {
     audioHit.play();
-    garlic.angle += Math.PI / 3;
-
     var _this = this;
     this.body.rotation.y += delta * 6;
-    // garlic.body.position.z=50;
-    TweenMax.to(this.body.position, 0.8, {
+    TweenMax.to(this.body.position, 0.5, {
         z: 200,
         ease: Power4.easeIn,
-        delay: 1,
+        delay: 0.05,
         onComplete: function() {
             _this.status = "ready";
+            garlic.angle = -worldRotation - Math.random() * .4;
+            garlic.angle = garlic.angle % (pi * 5);
+            garlic.body.position.z = 0;
         }
     });
 }
 
 function updateBloodPosition() {
-    // blood.mesh.rotation.y += delta * 6;
-    // blood.mesh.rotation.z = Math.PI / 2 - (worldRotation + blood.angle);
     blood.mesh.position.y = -worldRadius + Math.sin(worldRotation + blood.angle) * (worldRadius + 50);
     blood.mesh.position.x = Math.cos(worldRotation + blood.angle) * (worldRadius + 50);
 }
 
 function updateGarlicPosition() {
-    // if (garlic.status == "hit") return;
-    // else {
-    //     garlic.status = "ready";
-    garlic.mesh.rotation.z = worldRotation + garlic.angle - Math.PI / 2;
+    if (garlic.status == "hit") return;
+    if (worldRotation + garlic.angle > 2.5) {
+        garlic.angle = -worldRotation - Math.random() * 0.5;
+        garlic.body.rotation.y = Math.random() * pi * 2;
+
+    }
+    garlic.mesh.rotation.y = worldRotation + garlic.angle - pi / 2;
+    garlic.mesh.rotation.z = worldRotation + garlic.angle - pi / 2;
+    // garlic.mesh.position.z = 0;
     // garlic.mesh.position.z = Math.cos(worldRotation + garlic.angle) * (worldRadius + 3);
     garlic.mesh.position.y = -worldRadius + Math.sin(worldRotation + garlic.angle) * (worldRadius + 3);
     garlic.mesh.position.x = Math.cos(worldRotation + garlic.angle) * (worldRadius + 3);
-    // }
 }
 
 function updateCrossPosition() {
     cross.run();
     crossVampPos -= delta * crossAcceleration;
     crossPos += (crossVampPos - crossPos) * delta;
-    if (crossPos < .51) {
+    if (crossPos < .48) {
         gameOver();
     }
-    var angle = Math.PI * crossPos;
+    var angle = pi * crossPos;
     cross.mesh.position.y = -worldRadius + Math.sin(angle) * (worldRadius + 12);
     cross.mesh.position.x = Math.cos(angle) * (worldRadius + 15);
 }
 
 function updateWorldRotation() {
     worldRotation += delta * .02 * speed;
-    worldRotation = worldRotation % (Math.PI * 2);
+    worldRotation = worldRotation % (pi * 2);
     world.rotation.z = worldRotation;
 }

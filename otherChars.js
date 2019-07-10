@@ -117,11 +117,11 @@ Cross = function() {
     this.vertical.position.y = -4;
     this.body.add(this.vertical);
 
-    this.body.position.y = 30;
-    this.body.position.x = -60;
+    // this.body.position.y = 30;
+    // this.body.position.x = -60;
 
     var sparkGeom = new THREE.SphereGeometry(1, 1, 1);
-    this.spark = new THREE.Mesh(sparkGeom, orangeMat);
+    this.spark = new THREE.Mesh(sparkGeom, yellowMat);
     for (var i = 0; i < 30; i++) {
         this.spark1 = this.spark.clone();
         this.body.add(this.spark1);
@@ -140,9 +140,8 @@ function createCross() {
     cross = new Cross();
     cross.body.rotation.y = Math.PI / 4;
     cross.body.rotation.x = -Math.PI / 16;
-    cross.body.position.x = -20;
+    cross.body.position.x = -25;
     // cross.mesh.position.z = 20;
     cross.body.castShadow = true;
     scene.add(cross.mesh);
-    updateCrossPosition();
 }

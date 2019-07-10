@@ -12,29 +12,24 @@ var hemisphereLight;
 var shadowLight;
 var ambientLight;
 var world;
+var vamp;
+var fieldDistance;
 var worldRadius = 200;
 var worldRotation = 0;
 var pi = Math.PI;
 var speed = 8;
-var maxSpeed = 50;
 var initSpeed = 5;
 var delta = 0;
 var amp = 4;
-var disp = .2;
-var vamp;
-var cameraPosGame = 160;
-// var cameraPosGameOver = 260;
+var cameraPosGame = 140;
+var cameraGameOver = 200;
 var crossPos = .60;
 var crossVampPos = .60;
 var crossAcceleration = 0.003;
 var vampacceleration = 0.004;
-var level = 1;
-var levelInterval;
 var levelUpdateFreq = 3000;
-var collisionObstacle = 10;
+var collisionObstacle = 20;
 var collisionBonus = 30;
-var fieldGameOver;
-var fieldDistance;
 var progressWidth = 1;
 var bloodBar = 50;
 var element = document.getElementById("myprogressBar");
@@ -69,15 +64,15 @@ function loop() {
         updateGarlicPosition();
         updateCrossPosition();
         checkCollision();
-        progessBar()
+        progressBar();
     }
     render();
     requestAnimationFrame(loop);
 }
 
 function init() {
+    audioBackground.play();
     gameStatus = "play";
-
     // set up the scene, the camera and the renderer
     createScene();
 

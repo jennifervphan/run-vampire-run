@@ -81,26 +81,18 @@ Vampire = function() {
     this.nose.castShadow = true;
     this.head.add(this.nose);
 
-    // var mouthGeom = new THREE.CubeGeometry(4, 2, 4, 1);
-    // mouthGeom.applyMatrix(new THREE.Matrix4().makeTranslation(0, 0, 3));
-    // mouthGeom.applyMatrix(new THREE.Matrix4().makeRotationX(Math.PI / 12));
-    // this.mouth = new THREE.Mesh(mouthGeom, redMat);
-    // this.mouth.position.z = 8;
-    // this.mouth.position.y = -4;
-    // this.mouth.castShadow = true;
-    // this.head.add(this.mouth);
-
-
     var legGeom = new THREE.CubeGeometry(4, 4, 4, 1);
     this.legR = new THREE.Mesh(legGeom, darkBlackMat);
     this.legR.position.x = -2;
-    this.legR.position.z = 0;
+    this.legR.position.z = 9;
     this.legR.position.y = 1.5;
     this.legR.castShadow = true;
     this.body.add(this.legR);
 
     this.legL = this.legR.clone();
     this.legL.position.x = -this.legR.position.x;
+    this.legL.position.z = -this.legR.position.z;
+
     this.legL.castShadow = true;
     this.body.add(this.legL);
 
@@ -122,7 +114,7 @@ Vampire = function() {
     this.toothL.position.x = 1;
     this.toothL.position.z = 13;
     this.toothL.position.y = -15;
-    this.toothL.rotation.z = -Math.PI / 12;
+    this.toothL.rotation.z = -pi / 12;
     this.toothL.castShadow = true;
     this.head.add(this.toothL);
 
@@ -174,10 +166,10 @@ Vampire = function() {
     this.head.add(this.hair);
 
 
-    this.armR.rotation.x = Math.PI / 4;
-    this.armL.rotation.x = Math.PI / 4;
-    this.cape.rotation.x = Math.PI / 4;
-    this.torso.rotation.x = -Math.PI / 3;
+    this.armR.rotation.x = pi / 4;
+    this.armL.rotation.x = pi / 4;
+    this.cape.rotation.x = pi / 4;
+    this.torso.rotation.x = -pi / 3;
 
     this.body.traverse(function(object) {
         if (object instanceof THREE.Mesh) {
@@ -189,6 +181,6 @@ Vampire = function() {
 
 function createVamp() {
     vamp = new Vampire();
-    vamp.mesh.rotation.y = Math.PI / 2;
+    vamp.mesh.rotation.y = pi / 2;
     scene.add(vamp.mesh);
 }

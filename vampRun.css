@@ -19,7 +19,7 @@ body {
     text-transform: uppercase;
     font-size: 120px;
     text-align: center;
-    color: #ffc5a2;
+    color: red;
     opacity: 0;
     left: 50%;
     top: 30%;
@@ -53,7 +53,7 @@ body {
     font-family: 'Barriecito', cursive;
     /* text-transform: uppercase; */
     color: white;
-    font-size: 20px;
+    font-size: 30px;
     letter-spacing: 2px;
     text-align: center;
     margin-bottom: 5px;
@@ -63,7 +63,7 @@ body {
     position: relative;
     text-transform: uppercase;
     color: red;
-    font-size: 20px;
+    font-size: 30px;
     font-family: 'Barriecito';
     text-align: center;
 }
@@ -71,38 +71,15 @@ body {
 .distVal {
     text-transform: uppercase;
     color: white;
-    font-size: 10px;
+    font-size: 20px;
     font-family: 'Barriecito';
     text-align: center;
 }
 
-#credits {
+.instructions {
     position: absolute;
     width: 100%;
-    margin: auto;
-    bottom: 0;
-    margin-bottom: 20px;
-    font-family: 'Barriecito', cursive;
-    color: #544027;
-    font-size: 12px;
-    letter-spacing: 0.5px;
-    /* text-transform: uppercase; */
-    text-align: center;
-    user-select: none;
-}
-
-#credits a {
-    color: #544027;
-}
-
-#credits a:hover {
-    color: #dc5f45;
-}
-
-#instructions {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
+    bottom: 1%;
     margin: auto;
     margin-bottom: 50px;
     font-family: 'Barriecito', cursive;
@@ -114,7 +91,17 @@ body {
 }
 
 .lightInstructions {
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+    padding-bottom: 20px;
     color: red;
+    margin: auto;
+    font-family: 'Barriecito', cursive;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-align: center;
+    user-select: none;
 }
 
 .garlic {
@@ -129,7 +116,7 @@ body {
 }
 
 #myprogressBar {
-    width: 25%;
+    width: 50%;
     height: 20px;
     border-radius: 20px;
     background-color: red;
@@ -139,6 +126,7 @@ body {
 }
 
 #levels {
+    background-color: none;
     background: none;
     display: flex;
     flex-direction: row;
