@@ -63,7 +63,7 @@ $(window).keypress(function(e) {
 
 function loop() {
     if (gameStatus === "play") {
-        delta = clock.getDelta();
+        delta = 0.1 + Math.random() / 10;
         if (vamp.status == "running") {
             vamp.run();
             cross.run();
