@@ -77,6 +77,7 @@ function replay() {
     bloodBar = 50;
     distance = 0;
     dis = 0.5;
+    speed = 8;
     timeRan = 0;
     crossPos = .60;
     crossVampDist = .60;
