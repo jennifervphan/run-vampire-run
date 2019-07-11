@@ -127,7 +127,7 @@ function createCross() {
     cross = new Cross();
     cross.body.rotation.y = pi / 4;
     cross.body.rotation.x = -pi / 16;
-    cross.body.position.x = -25;
+    cross.body.position.x = -20;
     // cross.mesh.position.z = 20;
     cross.body.castShadow = true;
     scene.add(cross.mesh);
