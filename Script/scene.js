@@ -220,7 +220,7 @@ Tree = function() {
         var firefly = new THREE.Mesh(fireflyGeometry, yellowMat);
         firefly.position.x = Math.random() * 40;
         firefly.position.y = Math.random() * 100;
-        firefly.position.z = -Math.random() * 1.5;
+        firefly.position.z = -Math.random() * 1.2;
         this.mesh.add(firefly);
     }
 }
