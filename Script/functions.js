@@ -1,7 +1,7 @@
 function distanceRan() {
-    distance = Math.floor((dis + timeRan * speed) / 200);
+    distance = Math.floor((dis + timeRan * speed) / 25);
     $("#distValue").html(stri(distance));
-    dis += 0.5;
+    dis += 0.1;
     timeRan += 0.2;
 }
 
@@ -19,7 +19,7 @@ function progressBarGetBlood() {
 }
 
 function progressBar() {
-    bloodBar -= 0.004;
+    bloodBar -= 0.15;
     element.style.width = (bloodBar) + '%';
     bloodBar = bloodBar;
     noBlood();
@@ -33,15 +33,15 @@ function noBlood() {
 
 function hitGarlic() {
     garlic.status = "hit";
-    crossVampDist -= .04;
+    crossVampDist -= .07;
     garlic.hit();
     bloodBar -= 8;
 }
 
 function getBlood() {
     blood.angle -= pi / 2;
-    speed += 3;
-    crossVampDist += .01;
+    speed += 5;
+    crossVampDist += .005;
     progressBarGetBlood();
 }
 
@@ -76,8 +76,8 @@ function replay() {
     cross.mesh.scale.set(1, 1, 1);
     bloodBar = 50;
     distance = 0;
+    speed=25;
     dis = 0.5;
-    speed = 8;
     timeRan = 0;
     crossPos = .60;
     crossVampDist = .60;
