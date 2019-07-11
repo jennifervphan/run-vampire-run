@@ -11,9 +11,11 @@ var width;
 var hemisphereLight;
 var shadowLight;
 var ambientLight;
+var gameStatus;
 var world;
 var vamp;
-var fieldDistance;
+var dis = 0.5;
+var distance = 0;
 var worldRadius = 200;
 var worldRotation = 0;
 var pi = Math.PI;
@@ -21,44 +23,52 @@ var speed = 8;
 var initSpeed = 5;
 var delta = 0;
 var amp = 4;
-var cameraPosGame = 140;
-var cameraGameOver = 200;
+var cameraGame = 160;
+var cameraGameOver = 220;
 var crossPos = .60;
-var crossVampPos = .60;
+var crossVampDist = .60;
 var crossAcceleration = 0.003;
-var vampacceleration = 0.004;
 var levelUpdateFreq = 3000;
 var collisionObstacle = 20;
 var collisionBonus = 30;
 var progressWidth = 1;
 var bloodBar = 50;
+var timeRan = 0;
 var element = document.getElementById("myprogressBar");
-var audioJump = new Audio('386529__glennm__breathing-jumping.wav');
-var audioHit = new Audio('35445__inkington__hit-mic00.wav');
-var audioBackground = new Audio('Toccata and Fugue in D Minor.mp3')
+var audioJump = new sound('Audio/386529__glennm__breathing-jumping.wav');
+var audioHit = new sound('Audio/35445__inkington__hit-mic00.wav');
+var audioBackground = new sound('Audio/Toccata and Fugue in D Minor.mp3');
+var audioGameOver = new sound('Audio/368367__thezero__game-over-sound.wav')
+    // var game = new Game();
 
-
-
-window.addEventListener('load', init, false);
+$(document).ready(function() {
+    audioBackground.play();
+});
+$(window).keypress(function(e) {
+    if (e.which === 13) {
+        init();
+        $("#enter").addClass("hide");
+    }
+});
 
 $(window).keypress(function(e) {
     if (e.which === 32) {
-        if (gameStatus == "play")
+        if (gameStatus === "play")
             vamp.jump();
-        else if (gameStatus == "readyToReplay") {
+        else if (gameStatus === "gameOver") {
             replay();
         }
     }
 });
 
 function loop() {
-    delta = clock.getDelta();
-    if (gameStatus == "play") {
+    if (gameStatus === "play") {
+        delta = clock.getDelta();
         if (vamp.status == "running") {
             vamp.run();
             cross.run();
         }
-        // updateDistance();
+        distanceRan();
         updateWorldRotation();
         updateBloodPosition();
         updateGarlicPosition();
@@ -79,15 +89,13 @@ function init() {
     // add the lights
     createLights();
 
-    // add the objects
+    // add  and characters
     createWorld();
     createForest();
     createVamp();
     createBlood();
     createGarlic();
     createCross();
-
-    // resetGame();
 
     // start a loop that will update the objects' positions 
     // and render the scene on each frame

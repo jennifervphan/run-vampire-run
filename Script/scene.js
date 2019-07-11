@@ -101,8 +101,8 @@ function createScene() {
 
     camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
     camera.position.x = 0;
-    camera.position.y = 30;
-    camera.position.z = cameraPosGame;
+    camera.position.y = 40;
+    camera.position.z = cameraGame;
     camera.lookAt(new THREE.Vector3(0, 30, 0));
 
     renderer = new THREE.WebGLRenderer({
@@ -120,15 +120,11 @@ function createScene() {
     container.appendChild(renderer.domElement);
     // change camera position when resize the page
     window.addEventListener('resize', handleWindowResize, false);
-    // document.addEventListener('k', handleMouseDown, false);
-    // document.addEventListener("touchend", handleMouseDown, false);
 
     clock = new THREE.Clock();
 }
 
 var render = function() {
-    // mesh.rotation.x += 0.05;
-    // mesh.rotation.y += 0.05;
     renderer.render(scene, camera);
 }
 

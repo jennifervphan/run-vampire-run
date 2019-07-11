@@ -5,11 +5,35 @@ body {
 }
 
 #world {
-    position: absolute;
+    display: block;
+    z-index: 5;
+    position: relative;
+    /* z-index: 0; */
     width: 100%;
     height: 100%;
     overflow: hidden;
     background: linear-gradient(#1e2022, #52616b);
+}
+
+#enter {
+    position: absolute;
+    font-family: 'Barriecito', cursive;
+    font-weight: bold;
+    font-size: 90px;
+    width: 100%;
+    left: 50%;
+    top: 50%;
+    color: red;
+    transform: translate(-50%, -100%);
+    user-select: none;
+    transition: all 300ms ease-in-out;
+    text-align: center;
+}
+
+#enter.hide {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: all 300ms ease-in-out;
 }
 
 #gameoverInstructions {
@@ -35,28 +59,12 @@ body {
     transition: all 500ms ease-in-out;
 }
 
-#dist {
-    /* position: absolute; */
-    /* flex-direction: row;
-    align-items: center;
-    justify-content: center; */
-    left: 50%;
-    top: 50px;
-    transform: translate(-50%, 0%);
-    user-select: none;
-    padding-right: 50px;
-    border-right: solid 1px black;
-}
-
 .label {
-    position: relative;
     font-family: 'Barriecito', cursive;
-    /* text-transform: uppercase; */
     color: white;
     font-size: 30px;
     letter-spacing: 2px;
     text-align: center;
-    margin-bottom: 5px;
 }
 
 #distValue {
@@ -69,7 +77,6 @@ body {
 }
 
 .distVal {
-    text-transform: uppercase;
     color: white;
     font-size: 20px;
     font-family: 'Barriecito';
@@ -109,34 +116,35 @@ body {
 }
 
 #Progress_Status {
+    overflow: hidden;
     width: 100%;
     background-color: none;
+    margin: 5px 0 0 0;
     border-radius: 20px;
-    border: solid 1px black;
+    border: solid 1px rgb(31, 30, 30);
 }
 
 #myprogressBar {
     width: 50%;
-    height: 20px;
+    height: 25px;
     border-radius: 20px;
     background-color: red;
     text-align: center;
     line-height: 32px;
-    /* color: black; */
 }
 
 #levels {
-    background-color: none;
-    background: none;
+    position: relative;
+    display: block;
+    z-index: -5;
+    background: rgba(76, 175, 80, 0);
+    /* Green background with 30% opacity */
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-.blood {
-    left: 50%;
-    top: 50px;
-    transform: translate(-50%, 0%);
-    user-select: none;
+#levels>div {
+    margin: 20px;
 }

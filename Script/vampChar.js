@@ -6,7 +6,7 @@ Vampire = function() {
     this.body = new THREE.Group();
     this.mesh.add(this.body);
 
-    var torsoGeom = new THREE.CubeGeometry(7, 7, 15, 1);
+    var torsoGeom = new THREE.BoxGeometry(7, 7, 15, 1);
 
     this.torso = new THREE.Mesh(torsoGeom, whiteMat);
     this.torso.position.z = 4;
@@ -14,14 +14,14 @@ Vampire = function() {
     this.torso.castShadow = true;
     this.body.add(this.torso);
 
-    var pantsGeom = new THREE.CubeGeometry(9, 8, 9, 1);
+    var pantsGeom = new THREE.BoxGeometry(9, 8, 9, 1);
     this.pants = new THREE.Mesh(pantsGeom, darkBlackMat);
     this.pants.position.z = -3;
     this.pants.position.y = 0;
     this.pants.castShadow = true;
     this.torso.add(this.pants);
 
-    var shirtGeom = new THREE.CubeGeometry(3, 4, 7, 1);
+    var shirtGeom = new THREE.BoxGeometry(3, 4, 7, 1);
     this.shirtR = new THREE.Mesh(shirtGeom, darkBlackMat);
     this.shirtR.position.x = 4;
     this.shirtR.position.y = 2;
@@ -33,6 +33,7 @@ Vampire = function() {
     this.torso.add(this.shirtL);
 
     var capeGeom = new THREE.CubeGeometry(20, 1, 20, 1);
+    // make a triangle cape
     capeGeom.vertices[5].x += 9;
     capeGeom.vertices[5].z += .5;
 
@@ -51,7 +52,7 @@ Vampire = function() {
     this.cape.position.y = 2.5;
     this.torso.add(this.cape);
 
-    var headGeom = new THREE.CubeGeometry(10, 10, 13, 1);
+    var headGeom = new THREE.BoxGeometry(10, 10, 13, 1);
 
     headGeom.applyMatrix(new THREE.Matrix4().makeTranslation(0, 0, 7.5));
     this.head = new THREE.Mesh(headGeom, whiteMat);
@@ -60,9 +61,7 @@ Vampire = function() {
     this.head.castShadow = true;
     this.body.add(this.head);
 
-
-
-    var cheekGeom = new THREE.CubeGeometry(1, 4, 4, 1);
+    var cheekGeom = new THREE.BoxGeometry(1, 4, 4, 1);
     this.cheekR = new THREE.Mesh(cheekGeom, skinMat);
     this.cheekR.position.x = -5;
     this.cheekR.position.z = 7;
@@ -74,14 +73,14 @@ Vampire = function() {
     this.cheekL.position.x = -this.cheekR.position.x;
     this.head.add(this.cheekL);
 
-    var noseGeom = new THREE.CubeGeometry(5, 3, 3, 1);
+    var noseGeom = new THREE.BoxGeometry(5, 3, 3, 1);
     this.nose = new THREE.Mesh(noseGeom, whiteMat);
     this.nose.position.z = 14;
     this.nose.position.y = 2;
     this.nose.castShadow = true;
     this.head.add(this.nose);
 
-    var legGeom = new THREE.CubeGeometry(4, 4, 4, 1);
+    var legGeom = new THREE.BoxGeometry(4, 4, 4, 1);
     this.legR = new THREE.Mesh(legGeom, darkBlackMat);
     this.legR.position.x = -2;
     this.legR.position.z = 9;
@@ -96,7 +95,7 @@ Vampire = function() {
     this.legL.castShadow = true;
     this.body.add(this.legL);
 
-    var toothGeom = new THREE.CubeGeometry(2, 3, 1, 1);
+    var toothGeom = new THREE.BoxGeometry(2, 3, 1, 1);
     toothGeom.vertices[6].x += 1;
     toothGeom.vertices[6].z += .5;
 
@@ -124,7 +123,7 @@ Vampire = function() {
     this.toothR.castShadow = true;
     this.head.add(this.toothR);
 
-    var eyeGeom = new THREE.CubeGeometry(2, 2, 3);
+    var eyeGeom = new THREE.BoxGeometry(2, 2, 3);
 
     this.eyeL = new THREE.Mesh(eyeGeom, whiteMat);
     this.eyeL.position.x = 5;
@@ -133,7 +132,7 @@ Vampire = function() {
     this.eyeL.castShadow = true;
     this.head.add(this.eyeL);
 
-    var irisGeom = new THREE.CubeGeometry(.5, 1.5, 1.5);
+    var irisGeom = new THREE.BoxGeometry(.5, 1.5, 1.5);
 
     this.iris = new THREE.Mesh(irisGeom, darkBlackMat);
     this.iris.position.x = 1.2;
@@ -146,7 +145,7 @@ Vampire = function() {
     this.eyeR.position.x = -this.eyeL.position.x;
     this.head.add(this.eyeR);
 
-    var armGeom = new THREE.CubeGeometry(2, 7, 3, 1);
+    var armGeom = new THREE.BoxGeometry(2, 7, 3, 1);
     this.armR = new THREE.Mesh(armGeom, darkBlackMat);
     this.armR.position.x = 6;
     this.armR.position.y = -5;
@@ -181,6 +180,7 @@ Vampire = function() {
 
 function createVamp() {
     vamp = new Vampire();
+    // rotate the vampire so that it looks like running
     vamp.mesh.rotation.y = pi / 2;
     scene.add(vamp.mesh);
 }

@@ -7,17 +7,13 @@ Blood = function() {
 
     this.blood = new THREE.Mesh(bloodGeom, redMat);
     this.blood.position.z = 0;
-    this.blood.castShadow = true;
     this.mesh.add(this.blood);
-    this.mesh.traverse(function(object) {
-        if (object instanceof THREE.Mesh) {
-            object.visible = true;
-        }
-    });
 }
 
 function createBlood() {
     blood = new Blood();
+
+    blood.mesh.castShadow = true;
     scene.add(blood.mesh);
 }
 
@@ -41,7 +37,7 @@ Garlic = function() {
     this.body.add(this.garlic1);
     this.body.add(this.garlic2);
 
-    var garlicGeom3 = new THREE.CubeGeometry(10, 15, 3, 1);
+    var garlicGeom3 = new THREE.BoxGeometry(10, 15, 3, 1);
     garlicGeom3.vertices[4].x += 5;
     garlicGeom3.vertices[4].z += .5;
 
@@ -80,21 +76,11 @@ Garlic = function() {
     this.body.add(this.leaf);
     this.body.add(this.leaf2);
     this.body.add(this.leaf3);
-
     this.mesh.add(this.body);
-
-    // this.mesh.traverse(function(object) {
-    //     if (object instanceof THREE.Mesh) {
-    //         object.castShadow = true;
-    //         object.receiveShadow = true;
-    //     }
-    // });
-
 }
 
 function createGarlic() {
     garlic = new Garlic();
-    // garlic.mesh.scale.set(1.1, 1.1, 1.1);
     garlic.mesh.castShadow = true;
     garlic.mesh.receiveShadow = true;
     garlic.mesh.position.y = worldRadius + 4;
@@ -108,38 +94,39 @@ Cross = function() {
     this.mesh = new THREE.Group();
     this.body = new THREE.Group();
 
-    var horizontalGeom = new THREE.CubeGeometry(25, 8, 8, 1);
+    var horizontalGeom = new THREE.BoxGeometry(25, 8, 8, 1);
     this.horizontal = new THREE.Mesh(horizontalGeom, yellowMat);
     this.body.add(this.horizontal);
 
-    var verticalGeom = new THREE.CubeGeometry(8, 35, 8, 1);
+    var verticalGeom = new THREE.BoxGeometry(8, 35, 8, 1);
     this.vertical = new THREE.Mesh(verticalGeom, yellowMat);
     this.vertical.position.y = -4;
     this.body.add(this.vertical);
 
     // this.body.position.y = 30;
     // this.body.position.x = -60;
-
+    this.sparks = new THREE.Group();
     var sparkGeom = new THREE.SphereGeometry(1, 1, 1);
     this.spark = new THREE.Mesh(sparkGeom, yellowMat);
-    for (var i = 0; i < 30; i++) {
+    for (var i = 0; i < 20; i++) {
         this.spark1 = this.spark.clone();
-        this.body.add(this.spark1);
+        this.sparks.add(this.spark1);
         for (var j = 0; j < 20; j++) {
             this.spark1.position.x = [Math.random() - 0.5] * 30;
             this.spark1.position.y = [Math.random() - 0.5] * 30;
             this.spark1.position.z = [Math.random() - 0.5] * 10;
         }
     }
-    this.body.add(this.spark);
+    this.sparks.add(this.spark);
+    this.body.add(this.sparks);
     this.mesh.add(this.body);
 }
 
 
 function createCross() {
     cross = new Cross();
-    cross.body.rotation.y = Math.PI / 4;
-    cross.body.rotation.x = -Math.PI / 16;
+    cross.body.rotation.y = pi / 4;
+    cross.body.rotation.x = -pi / 16;
     cross.body.position.x = -25;
     // cross.mesh.position.z = 20;
     cross.body.castShadow = true;
