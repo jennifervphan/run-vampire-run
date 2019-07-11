@@ -72,7 +72,7 @@ function replay() {
     $("#gameoverInstructions").removeClass("show");
     cross.body.rotation.y = pi / 4;
     cross.body.rotation.x = -pi / 16;
-    cross.body.position.x = -20;
+    cross.body.position.x = -25;
     cross.mesh.scale.set(1, 1, 1);
     bloodBar = 50;
     distance = 0;
