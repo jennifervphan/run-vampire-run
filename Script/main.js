@@ -19,15 +19,14 @@ var distance = 0;
 var worldRadius = 200;
 var worldRotation = 0;
 var pi = Math.PI;
-var speed = 8;
-var initSpeed = 5;
+var speed = 25;
 var delta = 0;
 var amp = 4;
 var cameraGame = 160;
 var cameraGameOver = 220;
 var crossPos = .60;
 var crossVampDist = .60;
-var crossAcceleration = 0.003;
+var crossAcceleration = 0.0095;
 var levelUpdateFreq = 3000;
 var collisionObstacle = 20;
 var collisionBonus = 30;
@@ -68,20 +67,21 @@ function loop() {
             vamp.run();
             cross.run();
         }
-        distanceRan();
         updateWorldRotation();
         updateBloodPosition();
         updateGarlicPosition();
         updateCrossPosition();
         checkCollision();
         progressBar();
+        distanceRan();
     }
     if (gameStatus === "gameOver") {
         cross.win();
     }
     render();
-    requestAnimationFrame(loop);
 }
+
+
 
 function init() {
     audioBackground.play();
@@ -102,5 +102,5 @@ function init() {
 
     // start a loop that will update the objects' positions 
     // and render the scene on each frame
-    loop();
+    setInterval(loop, 30);
 }
