@@ -12,8 +12,11 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: linear-gradient(#1e2022, #52616b);
+    background: linear-gradient(rgb(48, 48, 48), black);
 }
+
+
+/* #202427 */
 
 #enter {
     position: absolute;

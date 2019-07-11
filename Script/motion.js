@@ -50,25 +50,25 @@ Vampire.prototype.caught = function() {
 }
 
 Cross.prototype.run = function() {
+
     var s = Math.min(speed, 50);
     this.runningCycle += delta * s * .7;
     this.runningCycle = this.runningCycle % (pi * 2);
     var t = this.runningCycle;
     this.body.position.y = 25 + Math.sin(t - pi / 2) * amp;
-    this.sparks.position.x = 0.2 + Math.sin(t - pi / 2) * amp * 0.4;
-    this.sparks.position.y = 5 + Math.sin(t - pi / 2) * amp;
-    this.sparks.position.z = 7.5 + Math.cos(t + 3.4);
+    this.sparks.rotation.y += pi / 3;
 }
 
 Cross.prototype.win = function() {
     cross.body.rotation.x = 0;
-    cross.body.rotation.z = pi / 8;
+    cross.body.rotation.y += pi / 30;
+    cross.sparks.rotation.y += pi / 30;
     cross.body.position.y = 20;
     cross.body.position.x = vamp.head.position.x;
-
     // cross.body.position.x = 20;
     cross.body.position.z = 0;
     cross.mesh.scale.set(2.5, 2.5, 2)
+        // render();
 }
 
 Garlic.prototype.hit = function() {

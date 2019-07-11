@@ -76,6 +76,9 @@ function loop() {
         checkCollision();
         progressBar();
     }
+    if (gameStatus === "gameOver") {
+        cross.win();
+    }
     render();
     requestAnimationFrame(loop);
 }

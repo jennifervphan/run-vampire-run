@@ -92,7 +92,7 @@ function createScene() {
     width = window.innerWidth;
 
     scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(Colors.black, 160, 350);
+    scene.fog = new THREE.Fog(Colors.darkBlack, 160, 350);
 
     aspectRatio = width / height;
     fieldOfView = 60;
@@ -213,6 +213,16 @@ Tree = function() {
     this.tree = new THREE.Mesh(treeGeom, matTree);
     this.tree.castShadow = true;
     this.mesh.add(this.tree);
+
+    if (Math.random() > 0.1) {
+        var size = Math.random() * 2;
+        var fireflyGeometry = new THREE.BoxGeometry(size, size, size, 1);
+        var firefly = new THREE.Mesh(fireflyGeometry, yellowMat);
+        firefly.position.x = Math.random() * 40;
+        firefly.position.y = Math.random() * 100;
+        firefly.position.z = -Math.random() * 1.5;
+        this.mesh.add(firefly);
+    }
 }
 
 function createForest() {

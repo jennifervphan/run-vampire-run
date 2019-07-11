@@ -61,7 +61,7 @@ function gameOver() {
     audioGameOver.play();
     $("#gameoverInstructions").addClass("show");
     gameStatus = "gameOver";
-    cross.win();
+    // cross.win();
     vamp.caught();
     blood.mesh.visible = false;
     garlic.mesh.visible = false;
