@@ -1,5 +1,5 @@
 function distanceRan() {
-    distance = Math.floor((dis + timeRan * speed) / 8);
+    distance = Math.floor((dis + timeRan * speed) / 200);
     $("#distValue").html(stri(distance));
     dis += 0.5;
     timeRan += 0.2;
@@ -19,7 +19,7 @@ function progressBarGetBlood() {
 }
 
 function progressBar() {
-    bloodBar -= 0.4;
+    bloodBar -= 0.004;
     element.style.width = (bloodBar) + '%';
     bloodBar = bloodBar;
     noBlood();

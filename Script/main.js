@@ -20,7 +20,6 @@ var worldRadius = 200;
 var worldRotation = 0;
 var pi = Math.PI;
 var speed = 8;
-var initSpeed = 5;
 var delta = 0;
 var amp = 4;
 var cameraGame = 160;
