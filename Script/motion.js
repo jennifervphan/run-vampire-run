@@ -66,7 +66,7 @@ Cross.prototype.win = function() {
     cross.body.position.y = 20;
     cross.body.position.x = vamp.head.position.x;
     // cross.body.position.x = 20;
-    cross.body.position.z = 0;
+    cross.body.position.z = -4;
     cross.mesh.scale.set(2.5, 2.5, 2)
         // render();
 }
