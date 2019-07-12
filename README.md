@@ -8,4 +8,6 @@ If he doesn't get any blood after a while, he cannot run anymore and of course, 
 
 Also, the vampire doesn't like garlic, try to avoid them because if the vampire comes into contact with the garlic he will lose his precious blood and his speed is slower. Too much garlic, and he will get caught!!!
 
+Cheat: Vampires can fly too!
+
 [Play here](https://run-vampire-run.herokuapp.com/)
