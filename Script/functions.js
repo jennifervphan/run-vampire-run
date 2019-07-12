@@ -40,8 +40,8 @@ function hitGarlic() {
 
 function getBlood() {
     blood.angle -= pi / 2;
-    speed += 6;
-    crossVampDist += .01;
+    speed += 5;
+    crossVampDist += .02;
     progressBarGetBlood();
 }
 
