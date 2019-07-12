@@ -19,7 +19,7 @@ function progressBarGetBlood() {
 }
 
 function progressBar() {
-    bloodBar -= 0.15;
+    bloodBar -= 0.16;
     element.style.width = (bloodBar) + '%';
     bloodBar = bloodBar;
     noBlood();
@@ -33,7 +33,7 @@ function noBlood() {
 
 function hitGarlic() {
     garlic.status = "hit";
-    crossVampDist -= .07;
+    crossVampDist -= .06;
     garlic.hit();
     bloodBar -= 8;
 }
@@ -41,7 +41,7 @@ function hitGarlic() {
 function getBlood() {
     blood.angle -= pi / 2;
     speed += 5;
-    crossVampDist += .005;
+    crossVampDist += .007;
     progressBarGetBlood();
 }
 
@@ -76,7 +76,7 @@ function replay() {
     cross.mesh.scale.set(1, 1, 1);
     bloodBar = 50;
     distance = 0;
-    speed=25;
+    speed = 25;
     dis = 0.5;
     timeRan = 0;
     crossPos = .60;

@@ -50,13 +50,12 @@ Vampire.prototype.caught = function() {
 }
 
 Cross.prototype.run = function() {
-
     var s = Math.min(speed, 80);
     this.runningCycle += delta * s * .7;
     this.runningCycle = this.runningCycle % (pi * 2);
     var t = this.runningCycle;
     this.body.position.y = 25 + Math.sin(t - pi / 2) * amp;
-    this.sparks.rotation.y += pi /20;
+    this.sparks.rotation.y += pi / 20;
 }
 
 Cross.prototype.win = function() {
@@ -67,8 +66,10 @@ Cross.prototype.win = function() {
     cross.body.position.x = vamp.head.position.x;
     // cross.body.position.x = 20;
     cross.body.position.z = 0;
-    cross.mesh.scale.set(2.5, 2.5, 2)
-        // render();
+    // TweenMax.to(cross.mesh.scale, 0.4, { y: 50, ease: Power2.easeOut });
+
+    cross.mesh.scale.set(2.5, 2.5, 2);
+    // render();
 }
 
 Garlic.prototype.hit = function() {
