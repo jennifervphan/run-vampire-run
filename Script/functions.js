@@ -7,8 +7,8 @@ function distanceRan() {
 
 function progressBarGetBlood() {
     var element = document.getElementById("myprogressBar");
-    if (bloodBar <= 75) {
-        bloodBar += 25;
+    if (bloodBar <= 85) {
+        bloodBar += 15;
         var x = 100 - (bloodBar)
         element.style.width = (100 - x) + '%';
         progressBar();
