@@ -53,7 +53,7 @@ $(document).ready(function() {
 
 $(window).keypress(function(e) {
     if (e.which === 32) {
-        if (gameStatus === null) {
+        if (gameStatus === undefined) {
             init();
             $("#enter").addClass("hide");
         } else if (gameStatus === "play")
