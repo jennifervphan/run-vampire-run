@@ -34,7 +34,7 @@ Vampire.prototype.jump = function() {
     TweenMax.to(this.mesh.position, 0.1, {
         y: 0,
         ease: Power4.easeIn,
-        delay: 0.2,
+        delay: 0.3,
         onComplete: function() {
             fixedThis.status = "running";
         }
