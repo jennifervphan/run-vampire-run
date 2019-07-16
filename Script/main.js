@@ -42,13 +42,15 @@ var audioGameOver = new sound('Audio/368367__thezero__game-over-sound.wav')
 
 $(document).ready(function() {
     audioBackground.play();
+    init();
+
 });
-$(window).keypress(function(e) {
-    if (e.which === 13) {
-        init();
-        $("#enter").addClass("hide");
-    }
-});
+// $(window).keypress(function(e) {
+//     if (e.which === 13) {
+//         init();
+//         $("#enter").addClass("hide");
+//     }
+// });
 
 $(window).keypress(function(e) {
     if (e.which === 32) {
@@ -59,6 +61,23 @@ $(window).keypress(function(e) {
         }
     }
 });
+
+document.addEventListener('touchstart', function(e) {
+
+    if (gameStatus === "play")
+        vamp.jump();
+    else if (gameStatus === "gameOver") {
+        replay();
+    }
+}, false);
+
+document.addEventListener('touchend', function(e) {
+    if (gameStatus === "play")
+        vamp.run();
+    else if (gameStatus === "gameOver") {
+        replay();
+    }
+}, false);
 
 function loop() {
     if (gameStatus === "play") {
