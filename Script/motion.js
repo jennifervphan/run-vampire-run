@@ -31,7 +31,7 @@ Vampire.prototype.jump = function() {
     TweenMax.to(this.mesh.position, 8, { y: 50, ease: Power2.easeOut });
     TweenMax.to(this.legR.position, 2, { y: 5, ease: Power2.easeOut });
     TweenMax.to(this.legL.position, 2, { y: 5, ease: Power2.easeOut });
-    TweenMax.to(this.mesh.position, 0.1, {
+    TweenMax.to(this.mesh.position, 16, {
         y: 0,
         ease: Power4.easeIn,
         delay: 0.1,
