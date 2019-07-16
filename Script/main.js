@@ -65,8 +65,10 @@ $(window).keypress(function(e) {
 });
 
 document.addEventListener('touchstart', function(e) {
-
-    if (gameStatus === "play")
+    if (gameStatus === undefined) {
+        init();
+        $("#enter").addClass("hide");
+    } else if (gameStatus === "play")
         vamp.jump();
     else if (gameStatus === "gameOver") {
         replay();
