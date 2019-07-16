@@ -19,7 +19,7 @@ function progressBarGetBlood() {
 }
 
 function progressBar() {
-    bloodBar -= 0.2;
+    bloodBar -= 0.1;
     element.style.width = (bloodBar) + '%';
     bloodBar = bloodBar;
     noBlood();
