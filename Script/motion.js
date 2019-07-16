@@ -28,10 +28,10 @@ Vampire.prototype.jump = function() {
     this.status = "jumping";
     audioJump.play();
     var fixedThis = this;
-    TweenMax.to(this.mesh.position, 0.1, { y: 50, ease: Power2.easeOut });
-    TweenMax.to(this.legR.position, 2, { y: 5, ease: Power2.easeOut });
-    TweenMax.to(this.legL.position, 2, { y: 5, ease: Power2.easeOut });
-    TweenMax.to(this.mesh.position, 16, {
+    TweenMax.to(this.mesh.position, 0.2, { y: 50, ease: Power2.easeOut });
+    TweenMax.to(this.legR.position, 0.2, { y: 5, ease: Power2.easeOut });
+    TweenMax.to(this.legL.position, 0.2, { y: 5, ease: Power2.easeOut });
+    TweenMax.to(this.mesh.position, 5, {
         y: 0,
         ease: Power4.easeIn,
         delay: 0.1,
