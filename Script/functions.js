@@ -76,7 +76,7 @@ function replay() {
     cross.mesh.scale.set(1, 1, 1);
     bloodBar = 50;
     distance = 0;
-    speed = 30;
+    speed = 20;
     dis = 0.5;
     timeRan = 0;
     crossPos = .60;
