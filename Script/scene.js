@@ -139,7 +139,7 @@ function handleWindowResize() {
 function createLights() {
     hemisphereLight = new THREE.HemisphereLight(Colors.black, Colors.darkGrey, .9);
     shadowLight = new THREE.DirectionalLight(0xffffff, .9);
-    ambientLight = new THREE.AmbientLight(0xdc8874, .5);
+    ambientLight = new THREE.AmbientLight(0xf7f1f0, .5);
     // direction of light
     shadowLight.position.set(150, 350, 350);
     shadowLight.castShadow = true;
