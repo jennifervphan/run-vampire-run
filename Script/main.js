@@ -42,7 +42,6 @@ var audioGameOver = new sound('Audio/368367__thezero__game-over-sound.wav')
 
 $(document).ready(function() {
     audioBackground.play();
-    init();
 
 });
 // $(window).keypress(function(e) {
@@ -54,7 +53,10 @@ $(document).ready(function() {
 
 $(window).keypress(function(e) {
     if (e.which === 32) {
-        if (gameStatus === "play")
+        if (gameStatus === null) {
+            init();
+            $("#enter").addClass("hide");
+        } else if (gameStatus === "play")
             vamp.jump();
         else if (gameStatus === "gameOver") {
             replay();
